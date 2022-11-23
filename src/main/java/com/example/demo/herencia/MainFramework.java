@@ -24,6 +24,7 @@ public static void main(String[] args) {
 	MedicoH medico = new MedicoH();
 	medico.setCedula("3132132");
 	medico.setNombre("Dianan");
+	
 	CitaMedicaH cita= new CitaMedicaH();
 	cita.agendar("123123",  LocalDateTime.of(2022,12, 2,8,30), pacienteTE,medico);
 	
