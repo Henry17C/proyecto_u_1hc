@@ -21,6 +21,7 @@ Integer valorDescuento= ph.calcularDecuento();
 System.out.println("Valor: "+ valorDescuento);
 
 this.medico=mh;
+this.paciente=ph;
 this.guardarCita(this);
 	
 }

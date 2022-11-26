@@ -11,22 +11,26 @@ import com.example.demo.herencia.CitaMedicaH;
 import com.example.demo.herencia.MedicoH;
 import com.example.demo.herencia.PacienteTerceraEdadH;
 import com.example.demo.spring.boot.CitaMedicaSB;
+import com.example.demo.spring.boot.MedicoSB;
 import com.example.demo.spring.boot.PacienteCancerSB;
+import com.example.demo.spring.boot.PacienteTerceraEdadSB;
 
 @SpringBootApplication
-public class ProyectoU1DllApplication implements CommandLineRunner {
+public class ProyectoU1HCApplication implements CommandLineRunner {
 
+	@Autowired //inyeccion de dependencias
+	private PacienteTerceraEdadSB pacienteTE;
 	@Autowired
-	private PacienteTerceraEdadH pacienteTE;
+	private PacienteCancerSB cancerSB;
 	@Autowired
 	private CitaMedicaSB citaMedicaSB ;
 	@Autowired
-	MedicoH medico = new MedicoH();
+	MedicoSB medico ;
 
 	
 	
 	public static void main(String[] args) {
-		SpringApplication.run(ProyectoU1DllApplication.class, args);
+		SpringApplication.run(ProyectoU1HCApplication.class, args);
 	}
 
 	@Override
@@ -41,7 +45,12 @@ public class ProyectoU1DllApplication implements CommandLineRunner {
 		System.out.println(pacienteTE);
 		
 		
-		//citaMedicaSB.agendar("123123",  LocalDateTime.of(2022,12, 2,8,30), pacienteTE,medico);
+		this.cancerSB.setCedula("123132");
+		this.cancerSB.setNombre("DANIEL");
+		this.cancerSB.setTipo("C");
+		
+		
+		citaMedicaSB.agendar("123123",  LocalDateTime.of(2022,12, 2,8,30), this.cancerSB,medico);
 		
 		
 	}

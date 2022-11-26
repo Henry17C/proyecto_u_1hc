@@ -2,8 +2,8 @@ package com.example.demo.spring.boot;
 
 import org.springframework.stereotype.Component;
 
-@Component
-public class PacienteNinioH extends PacienteSB {
+@Component //inversion de control
+public class PacienteNinioSB extends PacienteSB {
 private int pesoNacimiento;
 
 public int getPesoNacimiento() {
@@ -18,6 +18,11 @@ public void setPesoNacimiento(int pesoNacimiento) {
 protected Integer calcularDecuento() {
 	System.out.println("Paciente Ninio con 10%  descuento");
 	return 10;
+}
+
+@Override
+public String toString() {
+	return "PacienteNinioSB [pesoNacimiento=" + pesoNacimiento + "]";
 }
 
 }
