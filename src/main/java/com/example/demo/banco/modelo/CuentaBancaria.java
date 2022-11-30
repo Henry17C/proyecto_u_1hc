@@ -4,6 +4,11 @@ import java.math.BigDecimal;
 
 public class CuentaBancaria {
 	
+	@Override
+	public String toString() {
+		return "CuentaBancaria [numero=" + numero + ", tipo=" + tipo + ", saldo=" + saldo + ", titular=" + titular
+				+ "]";
+	}
 	private String numero;
 	private String tipo;
 	private BigDecimal saldo;
