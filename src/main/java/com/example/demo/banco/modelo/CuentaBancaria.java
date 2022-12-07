@@ -3,18 +3,17 @@ package com.example.demo.banco.modelo;
 import java.math.BigDecimal;
 
 public class CuentaBancaria {
-	
+	private String numero;
+	private String tipo;
+	private BigDecimal saldo;
+	private String titular;
+
 	@Override
 	public String toString() {
 		return "CuentaBancaria [numero=" + numero + ", tipo=" + tipo + ", saldo=" + saldo + ", titular=" + titular
 				+ "]";
 	}
-	private String numero;
-	private String tipo;
-	private BigDecimal saldo;
-	private String titular;
-   
-	//get y set
+	//Getter& setter
 	public String getNumero() {
 		return numero;
 	}
@@ -39,6 +38,11 @@ public class CuentaBancaria {
 	public void setTitular(String titular) {
 		this.titular = titular;
 	}
+	
+
+	
+	
+	
 	
 	
 	

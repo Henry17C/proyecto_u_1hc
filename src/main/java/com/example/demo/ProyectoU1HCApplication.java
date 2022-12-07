@@ -9,7 +9,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.example.demo.banco.modelo.CuentaBancaria;
+import com.example.demo.banco.modelo.Transferencia;
 import com.example.demo.banco.service.ICuentaBancariaService;
+import com.example.demo.banco.service.ITransferenciaService;
 import com.example.demo.herencia.CitaMedicaH;
 import com.example.demo.herencia.MedicoH;
 import com.example.demo.herencia.PacienteTerceraEdadH;
@@ -23,6 +25,9 @@ public class ProyectoU1HCApplication implements CommandLineRunner {
 
 	@Autowired	
 	private ICuentaBancariaService bancariaService;
+	@Autowired
+	private ITransferenciaService transferenciaService;
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ProyectoU1HCApplication.class, args);
@@ -30,26 +35,40 @@ public class ProyectoU1HCApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		CuentaBancaria cuenta1= new CuentaBancaria();
-		cuenta1.setNumero("132132");
-		cuenta1.setSaldo(new BigDecimal(10));
-		cuenta1.setTipo("C");
-		cuenta1.setTipo("Pepe");
-		this.bancariaService.insertar(cuenta1);
+		CuentaBancaria bancaria1 = new CuentaBancaria();
+		bancaria1.setNumero("0002");
+		bancaria1.setSaldo(new BigDecimal(200));
+		bancaria1.setTipo("A");
+		bancaria1.setTitular("Henry");
 		
 		
+		CuentaBancaria bancaria2 = new CuentaBancaria();
+		bancaria2.setNumero("0001");
+		bancaria2.setSaldo(new BigDecimal(300));
+		bancaria2.setTipo("B");
+		bancaria2.setTitular("Edison");
 		
-		CuentaBancaria cuenta2= new CuentaBancaria();
-		cuenta2.setNumero("132132");
-		cuenta2.setSaldo(new BigDecimal(10));
-		cuenta2.setTipo("C");
-		cuenta2.setTipo("Diana");
-		this.bancariaService.insertar(cuenta2);
+		this.bancariaService.insertar(bancaria1);
+		this.bancariaService.insertar(bancaria2);
 		
-	}
+		System.out.println("Reporte1");
+		
+		for (Transferencia t : this.transferenciaService.buscarReporte()) {
 
+				System.out.println(t);
 	
+		}
+		
+		this.transferenciaService.realizar("0002", "0001", new BigDecimal(50));
+
+		System.out.println("Reporte2");
+		for (Transferencia t : this.transferenciaService.buscarReporte()) {
+
+			System.out.println(t);	
+		}
+
 		
 	}
+}
 
 
