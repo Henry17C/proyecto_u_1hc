@@ -11,10 +11,10 @@ import org.springframework.stereotype.Service;
 import com.example.demo.banco.modelo.CuentaBancaria;
 import com.example.demo.banco.modelo.Transferencia;
 import com.example.demo.banco.repository.ITransferenciaRepository;
-@Service
+@Service//Inversion de control: creacion y eliminacion de objetos/ instacias(@Service, @Repository, @Controler)
 public class TransferenciaServiceImpl implements ITransferenciaService{
 	
-	@Autowired
+	@Autowired// Inyeccion de dependencias: Inyectar o sumistrar intacias/Objetos a una clase(@Autowired)
 	private ITransferenciaRepository transferencia;
 	
 	@Autowired

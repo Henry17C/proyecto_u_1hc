@@ -51,6 +51,16 @@ public class ProyectoU1HCApplication implements CommandLineRunner {
 		this.bancariaService.insertar(bancaria1);
 		this.bancariaService.insertar(bancaria2);
 		
+		System.out.println("Saldo actuales");
+		CuentaBancaria cuentaActuala1= this.bancariaService.buscarPorNumero("0001");
+		CuentaBancaria cuentaActuala2= this.bancariaService.buscarPorNumero("0002");
+	System.out.println("Saldo actual: "+cuentaActuala1.getSaldo());
+	System.out.println("Saldo actual: "+cuentaActuala2.getSaldo());
+		
+		
+		
+		
+		
 		System.out.println("Reporte1");
 		
 		for (Transferencia t : this.transferenciaService.buscarReporte()) {
@@ -67,8 +77,15 @@ public class ProyectoU1HCApplication implements CommandLineRunner {
 			System.out.println(t);	
 		}
 
-		
-	}
-}
+		System.out.println("Saldo nuevos");
+		CuentaBancaria cuentaConsultada1= this.bancariaService.buscarPorNumero("0001");
+		CuentaBancaria cuentaConsultada2= this.bancariaService.buscarPorNumero("0002");
+	System.out.println("Nuevo saldo: "+cuentaConsultada1.getSaldo());
+	System.out.println("Nuevo saldo: "+cuentaConsultada2.getSaldo());
+	
+	
+
+		}
+		}
 
 
