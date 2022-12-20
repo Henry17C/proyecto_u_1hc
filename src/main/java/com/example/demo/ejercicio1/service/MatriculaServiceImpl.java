@@ -15,49 +15,51 @@ import com.example.demo.ejercicio1.repository.IVehiculoRepository;
 
 @Service
 public class MatriculaServiceImpl implements IMatriculaService {
+
+	@Autowired
+	private IMatriculaRepository iMatriculaRepository;
 	
 	@Autowired
-	IMatriculaRepository iMatriculaRepository;
-	@Autowired
-
 	private IPropietarioRepository iPropietarioRepository;
+	
 	@Autowired
-
 	private IVehiculoRepository iVehiculoRepository;
-
+	
 	@Override
-	public void matricular(String celudula, String placa) {
-		Matricula  matricula = new Matricula();
+	public void matricular(String cedula, String placa) {
+		// TODO Auto-generated method stub
+		Matricula matricula = new Matricula();
 		matricula.setFecha(LocalDateTime.now());
-		Propietario pro= this.iPropietarioRepository.buscar(celudula);
+		Propietario pro= this.iPropietarioRepository.buscar(cedula);
 		matricula.setPropietario(pro);
 		
-		Vehiculo vehiculo=this.iVehiculoRepository.buscar(placa);
+		
+		Vehiculo vehiculo = this.iVehiculoRepository.buscar(placa);
 		matricula.setVehiculo(vehiculo);
 		
-		BigDecimal valor=null;
-		if (vehiculo.getTipo().equals("P")) {
-			
-			valor= vehiculo.getPrecio().multiply(new BigDecimal(0.15));
-			
+		//Para el tipo de matricula
+		BigDecimal valor = null;
+		if(vehiculo.getTipo().equals("P")) {
+			valor = vehiculo.getPrecio().multiply(new BigDecimal(0.15));
+		}else if(vehiculo.getTipo().equals("L")) {
+			//LIVIANO
+			valor = vehiculo.getPrecio().multiply(new BigDecimal(0.10));
 		}else {
-			//liviano
-			valor= vehiculo.getPrecio().multiply(new BigDecimal(0.10));
+			//Hibrido
+		}
+		
+		//-1 cuando el valor de la izquierda es menor
+		//0 son iguales
+		//1 valor derecha es mayor 
+		if(valor.compareTo(new BigDecimal(2000))>1) {
+			BigDecimal descuento= valor.multiply(new BigDecimal(7));
+			descuento= descuento.divide(new BigDecimal(100));
+			valor = valor.subtract(descuento);
 			
 		}
-		
-		if(valor.compareTo(new BigDecimal(2000))>1) {
-			//-1 izquierda menor
-			//0 iguales
-			//1 valor izquierda es mayor
-			BigDecimal decuento= valor.multiply(new BigDecimal(0.07));
-			valor= valor.subtract(decuento);
-		}
-		
 		matricula.setValor(valor);
-
+		
 		this.iMatriculaRepository.insertar(matricula);
 	}
-	
 
 }

@@ -4,23 +4,25 @@ import java.time.LocalDateTime;
 
 public class Propietario {
 	
-	private String cedula;
-	private String apellido;
 	private String nombre;
+	private String apellido;
+	private String cedula;
 	private LocalDateTime fechaNacimiento;
+	
 	
 	
 	
 	@Override
 	public String toString() {
-		return "Matricula [cedula=" + cedula + ", apellido=" + apellido + ", nombre=" + nombre + ", fechaNacimiento="
+		return "Propietario [nombre=" + nombre + ", apellido=" + apellido + ", cedula=" + cedula + ", fechaNacimiento="
 				+ fechaNacimiento + "]";
 	}
-	public String getCedula() {
-		return cedula;
+	//SET y GET
+	public String getNombre() {
+		return nombre;
 	}
-	public void setCedula(String cedula) {
-		this.cedula = cedula;
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 	public String getApellido() {
 		return apellido;
@@ -28,11 +30,11 @@ public class Propietario {
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
 	}
-	public String getNombre() {
-		return nombre;
+	public String getCedula() {
+		return cedula;
 	}
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setCedula(String cedula) {
+		this.cedula = cedula;
 	}
 	public LocalDateTime getFechaNacimiento() {
 		return fechaNacimiento;
@@ -40,6 +42,9 @@ public class Propietario {
 	public void setFechaNacimiento(LocalDateTime fechaNacimiento) {
 		this.fechaNacimiento = fechaNacimiento;
 	}
+	
+	
+	
 	
 
 }

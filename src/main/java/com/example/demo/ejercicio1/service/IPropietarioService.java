@@ -4,6 +4,7 @@ import com.example.demo.ejercicio1.modelo.Propietario;
 
 public interface IPropietarioService {
 	
-	public void grardar(Propietario propietario);
-	public void eliminar (String cedula);
+	public void guardar(Propietario propietario);
+	public void eliminar(String cedula);
+	
 }

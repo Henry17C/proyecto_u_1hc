@@ -18,6 +18,7 @@ public class Matricula {
 		return "Matricula [fecha=" + fecha + ", valor=" + valor + ", propietario=" + propietario + ", vehiculo="
 				+ vehiculo + "]";
 	}
+	//SET y GET
 	public LocalDateTime getFecha() {
 		return fecha;
 	}
@@ -42,7 +43,6 @@ public class Matricula {
 	public void setVehiculo(Vehiculo vehiculo) {
 		this.vehiculo = vehiculo;
 	}
-	
 	
 	
 	

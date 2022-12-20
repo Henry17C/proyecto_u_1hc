@@ -3,15 +3,14 @@ package com.example.demo.ejercicio1.service;
 import java.math.BigDecimal;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.ejercicio1.modelo.Vehiculo;
 import com.example.demo.ejercicio1.repository.IVehiculoRepository;
 
 @Service
-public class VehiculoServiceImpl implements IVehiculoService{
-	
+public class VehiculoServiceImpl implements IVehiculoService {
+
 	@Autowired
 	private IVehiculoRepository iVehiculoRepository;
 
@@ -40,12 +39,14 @@ public class VehiculoServiceImpl implements IVehiculoService{
 	}
 
 	@Override
-	public void modificar(String placa, BigDecimal precio, String marca) {
-		Vehiculo vehiculo= this.iVehiculoRepository.buscar(placa);
+	public void modificar(String placa,BigDecimal precio, String marca) {
+		// TODO Auto-generated method stub
+		Vehiculo vehiculo = this.iVehiculoRepository.buscar(placa);
 		vehiculo.setMarca(marca);
 		vehiculo.setPrecio(precio);
-		vehiculo.setPlaca(placa);
-			this.iVehiculoRepository.actualizar(vehiculo);
+		
+		this.iVehiculoRepository.actualizar(vehiculo);
+		
 	}
 
 }

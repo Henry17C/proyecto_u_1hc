@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -15,6 +16,7 @@ import com.example.demo.banco.service.ITransferenciaService;
 import com.example.demo.ejercicio1.modelo.Propietario;
 import com.example.demo.ejercicio1.modelo.Vehiculo;
 import com.example.demo.ejercicio1.repository.IMatriculaRepository;
+import com.example.demo.ejercicio1.service.IMatriculaNuevaService;
 import com.example.demo.ejercicio1.service.IMatriculaService;
 import com.example.demo.ejercicio1.service.IPropietarioService;
 import com.example.demo.ejercicio1.service.IVehiculoService;
@@ -28,13 +30,27 @@ import com.example.demo.spring.boot.PacienteTerceraEdadSB;
 
 @SpringBootApplication
 public class ProyectoU1HCApplication implements CommandLineRunner {
-
-	@Autowired	
-	private IVehiculoService iVehiculoService;
-	@Autowired	
-	private IPropietarioService iPropietarioService;
+	/*@Autowired
+	private ICuentaBancariaService bancariaService;
+	
+	@Qualifier("grande")
 	@Autowired
-	private IMatriculaService iMatriculaService;
+	private ITransferenciaService iTransferenciaService;
+	*/
+	@Autowired
+	private IVehiculoService iVehiculoService;
+	
+	@Autowired
+	private IPropietarioService iPropietarioService;
+	
+	@Autowired
+	@Qualifier("pesado")
+	private IMatriculaNuevaService iMatriculaService;
+	
+	
+	@Autowired
+	@Qualifier("liviano")
+	private IMatriculaNuevaService iMatriculaServiceLiviano;
 	
 	
 	
@@ -46,30 +62,35 @@ public class ProyectoU1HCApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 	
 		
-		//opcion1
-Vehiculo vehiculo = new Vehiculo();
-vehiculo.setMarca("Toyota");
-vehiculo.setPlaca("asd1453");
-vehiculo.setPrecio(new BigDecimal(200));
-vehiculo.setTipo("P");
-
-this.iVehiculoService.crear(vehiculo);
-
-vehiculo.setPrecio(new BigDecimal(10000));
-vehiculo.setMarca("Toyota");
-this.iVehiculoService.modificar(vehiculo);
-
-//opcion2
-Propietario propietario=new Propietario();
-propietario.setApellido("Cayambe");
-propietario.setCedula("175646");
-propietario.setFechaNacimiento(LocalDateTime.of(1989,7,7,12,35));
-propietario.setNombre("Ed");
-this.iPropietarioService.grardar(propietario);
-
-// opcion 3
-this.iMatriculaService.matricular("175646", "asd1453");
-
+		// TODO Auto-generated method stub
+				System.out.println("SPRING BOOT");
+				
+				//Opcion 1
+				Vehiculo vehi = new Vehiculo();
+				vehi.setMarca("Toyta");
+				vehi.setPlaca("PDF12654");
+				vehi.setPrecio(new BigDecimal(20000));
+				vehi.setTipo("P");
+				this.iVehiculoService.crear(vehi);
+				//Es una opcion
+				vehi.setPrecio(new BigDecimal(10000));
+				vehi.setMarca("Toyota");
+				this.iVehiculoService.modificar(vehi);
+				
+				//Opcion 2
+				
+				
+				Propietario propietario = new Propietario();
+				propietario.setApellido("Colon");
+				propietario.setCedula("154774566");
+				propietario.setFechaNacimiento(LocalDateTime.of(1978, 8,31,12,35));
+				propietario.setNombre("Edison");
+				 this.iPropietarioService.guardar(propietario);
+				 
+				 
+				 //Logica de negocio no puede estar aqui
+			
+				
 
 
 
