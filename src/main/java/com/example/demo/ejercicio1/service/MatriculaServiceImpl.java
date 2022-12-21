@@ -26,7 +26,7 @@ public class MatriculaServiceImpl implements IMatriculaService {
 	private IVehiculoRepository iVehiculoRepository;
 	
 	@Override
-	public void matricular(String cedula, String placa) {
+	public BigDecimal matricular(String cedula, String placa) {
 		// TODO Auto-generated method stub
 		Matricula matricula = new Matricula();
 		matricula.setFecha(LocalDateTime.now());
@@ -60,6 +60,7 @@ public class MatriculaServiceImpl implements IMatriculaService {
 		matricula.setValor(valor);
 		
 		this.iMatriculaRepository.insertar(matricula);
+		return valor;
 	}
 
 }
